@@ -13,4 +13,16 @@ public class UserService {
     List<User> getAllUsers(){
         return userRepository.findAll();
     }
+
+    User getUserById(String id) {
+        return userRepository.findById(id).get();
+    }
+
+    User createUser(User user) {
+        return userRepository.insert(user);
+    }
+
+    User updateUser(User user) {
+        return userRepository.insert(user);
+    }
 }

@@ -1,9 +1,7 @@
 package com.nala.pet.user;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,4 +16,14 @@ public class UserController {
     public List<User> fetchAllUser(){
         return userService.getAllUsers();
     }
+
+    @GetMapping("/{userId}")
+    public User fetchUserById(@PathVariable(value = "userId") String id){ return  userService.getUserById(id); }
+
+    @PostMapping
+    public User createUser(@RequestBody User user){ return userService.createUser(user); }
+
+    @PutMapping
+    public User updateUser(@RequestBody User user){ return userService.updateUser(user); }
+
 }

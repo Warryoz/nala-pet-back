@@ -22,7 +22,7 @@ public class NalaApplication {
 		SpringApplication.run(NalaApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	CommandLineRunner runner(UserRepository userRepository,
 							  MongoTemplate mongoTemplate){
 		return args -> {
@@ -61,7 +61,7 @@ public class NalaApplication {
 		};
 	}
 
-	/*private void usingMongoTemplate(UserRepository userRepository, MongoTemplate mongoTemplate, User user) {
+	private void usingMongoTemplate(UserRepository userRepository, MongoTemplate mongoTemplate, User user) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("email").is(user.getEmail()));
 		List<User> users = mongoTemplate.find(query, User.class);
