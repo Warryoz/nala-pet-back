@@ -13,17 +13,19 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
-    public List<User> fetchAllUser(){
+    public List<UserDto> fetchAllUser(){
         return userService.getAllUsers();
     }
 
     @GetMapping("/{userId}")
-    public User fetchUserById(@PathVariable(value = "userId") String id){ return  userService.getUserById(id); }
+    public UserDto fetchUserById(@PathVariable(value = "userId") String userId){ return  userService.getUserById(userId); }
 
     @PostMapping
-    public User createUser(@RequestBody User user){ return userService.createUser(user); }
+    public UserDto createUser(@RequestBody UserDto userDto){ return userService.createUser(userDto); }
 
-    @PutMapping
-    public User updateUser(@RequestBody User user){ return userService.updateUser(user); }
+    @PutMapping("/{userId}")
+    public UserDto updateUser(@PathVariable(value = "userId") String userId, @RequestBody UserDto userDto){
+        return userService.updateUser(userId, userDto);
+    }
 
 }

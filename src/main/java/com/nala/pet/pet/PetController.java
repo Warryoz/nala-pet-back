@@ -14,16 +14,16 @@ public class PetController {
 
     private final PetService petService;
     @GetMapping
-    public List<Pet> fetchAllPets(){
+    public List<PetDto> fetchAllPets(){
         return petService.getAllPets();
     }
 
     @GetMapping("/{petId}")
-    public Pet fetchUserById(@PathVariable(value = "id") String id){ return petService.getPetById(id); }
+    public PetDto fetchUserById(@PathVariable(value = "petId") String petId){ return petService.getPetById(petId); }
 
     @PostMapping
-    public Pet createPet(@RequestBody Pet pet){ return petService.createPet(pet); }
+    public PetDto createPet(@RequestBody PetDto petDto){ return petService.createPet(petDto); }
 
-    @PutMapping
-    public Pet updatePet(@RequestBody Pet pet){ return petService.updatePet(pet); }
+    @PutMapping("/{petId}")
+    public PetDto updatePet(@PathVariable(value = "petId") String petId, @RequestBody PetDto petDto){ return petService.updatePet(petId, petDto); }
 }
