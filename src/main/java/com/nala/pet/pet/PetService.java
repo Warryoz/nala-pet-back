@@ -14,7 +14,7 @@ public class PetService {
     private final PetRepository petRepository;
     private final ModelMapper mapper;
 
-    List<PetDto> getAllPets(){
+    List<PetDto>getAllPets (){
         return petRepository.findAll().stream()
                 .map(this::mapToDto)
                 .collect(Collectors.toList());
