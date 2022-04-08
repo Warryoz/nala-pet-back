@@ -22,7 +22,7 @@ public class PetController {
     public PetDto fetchUserById(@PathVariable(value = "petId") String petId){ return petService.getPetById(petId); }
 
     @PostMapping
-    public PetDto createPet(@RequestBody PetDto petDto){ return petService.createPet(petDto); }
+    public PetDto createPet(@RequestBody PetDto petDto){ System.out.println(petDto); return petService.createPet(petDto); }
 
     @PutMapping("/{petId}")
     public PetDto updatePet(@PathVariable(value = "petId") String petId, @RequestBody PetDto petDto){ return petService.updatePet(petId, petDto); }

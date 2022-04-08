@@ -29,6 +29,7 @@ public class PetService {
     PetDto createPet(PetDto petDto) {
         Pet pet = mapToEntity(petDto);
         Pet newPet = petRepository.save(pet);
+        System.out.println(pet);
         return mapToDto(newPet);
     }
 
