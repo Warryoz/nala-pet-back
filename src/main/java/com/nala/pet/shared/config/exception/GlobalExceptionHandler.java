@@ -17,7 +17,7 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    //handler global exceptions
+    //Handler global exceptions
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDetails> handleGlobalException(Exception exception, WebRequest webRequest){
             ErrorDetails errorDetails = new ErrorDetails(new Date(), exception.getMessage(),
@@ -25,7 +25,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    //handler nala api exceptions
+    //Handler Nala api exceptions
     @ExceptionHandler(NalaApiException.class)
     public ResponseEntity<ErrorDetails> handleNalaApiException(Exception exception, WebRequest webRequest){
         ErrorDetails errorDetails = new ErrorDetails(new Date(), exception.getMessage(),
@@ -33,7 +33,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
 
-    //handler specific exceptions
+    //Handler specific exceptions
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorDetails> handleResourceNotFoundException(ResourceNotFoundException exception,
                                                                         WebRequest webRequest){
@@ -49,7 +49,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                                                                   WebRequest webRequest){
         Map<String ,String> errors = new HashMap<>();
         exception.getBindingResult().getAllErrors().forEach(error ->{
-            String fieldName =((FieldError)error).getField();
+            String fieldName = ((FieldError)error).getField();
             String message = error.getDefaultMessage();
             errors.put(fieldName, message);
         });

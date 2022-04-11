@@ -1,8 +1,11 @@
 package com.nala.pet.user;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,14 +21,16 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public UserDto fetchUserById(@PathVariable(value = "userId") String userId){ return  userService.getUserById(userId); }
-
+    public ResponseEntity<UserDto> fetchUserById(@PathVariable(value = "userId") String userId){
+        return new ResponseEntity<>(userService.getUserById(userId), HttpStatus.OK);
+    }
     @PostMapping
-    public UserDto createUser(@RequestBody UserDto userDto){ return userService.createUser(userDto); }
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
+        return  new ResponseEntity<>(userService.createUser(userDto), HttpStatus.CREATED); }
 
     @PutMapping("/{userId}")
-    public UserDto updateUser(@PathVariable(value = "userId") String userId, @RequestBody UserDto userDto){
-        return userService.updateUser(userId, userDto);
+    public ResponseEntity<UserDto> updateUser(@PathVariable(value = "userId") String userId, @Valid @RequestBody UserDto userDto){
+        return  new ResponseEntity<>(userService.updateUser(userId, userDto), HttpStatus.OK);
     }
 
 }

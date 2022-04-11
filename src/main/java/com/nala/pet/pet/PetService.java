@@ -29,15 +29,14 @@ public class PetService {
     PetDto createPet(PetDto petDto) {
         Pet pet = mapToEntity(petDto);
         Pet newPet = petRepository.save(pet);
-        System.out.println(pet);
         return mapToDto(newPet);
     }
 
     PetDto updatePet(String petId, PetDto petDto) {
         Pet pet = petRepository.findById(petId)
                 .orElseThrow(()-> new ResourceNotFoundException("Pet", "id", petId));
-        pet.setBirthDate(petDto.getBirthDate());
         pet.setName(petDto.getName());
+        pet.setBirthDate(petDto.getBirthDate());
         pet.setHasVaccineUpdated(petDto.getHasVaccineUpdated());
         pet.setRace(petDto.getRace());
         petRepository.save(pet);

@@ -1,7 +1,9 @@
 package com.nala.pet.pet;
 
-import lombok.*;
-
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
