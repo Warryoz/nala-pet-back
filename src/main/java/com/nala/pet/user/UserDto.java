@@ -3,16 +3,15 @@ package com.nala.pet.user;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.validation.constraints.NotEmpty;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document
-public class User {
-    @Id
+public class UserDto {
     private String id;
+    @NotEmpty(message = "firstName may not be empty")
     private String firstName;
     private String lastName;
     private String email;

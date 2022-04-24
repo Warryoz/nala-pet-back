@@ -1,17 +1,15 @@
 package com.nala.pet.pet;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document
-public class Pet {
-    @Id
+public class PetDto {
     private String id;
     private String name;
     private Boolean hasVaccineUpdated;
