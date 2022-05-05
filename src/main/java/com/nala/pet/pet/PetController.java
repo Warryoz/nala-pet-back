@@ -13,6 +13,7 @@ import java.util.List;
 public class PetController {
 
     private final PetService petService;
+
     @GetMapping
     public List<PetDto> fetchAllPets(){
         return petService.getAllPets();
@@ -20,7 +21,8 @@ public class PetController {
 
     @GetMapping("/{petId}")
     public ResponseEntity<PetDto> fetchUserById(@PathVariable(value = "petId") String petId){
-        return new ResponseEntity<>(petService.getPetById(petId), HttpStatus.OK); }
+        return new ResponseEntity<>(petService.getPetById(petId), HttpStatus.OK);
+    }
 
     @PostMapping
     public ResponseEntity<PetDto> createPet(@RequestBody PetDto petDto){
@@ -31,4 +33,5 @@ public class PetController {
     public ResponseEntity<PetDto> updatePet(@PathVariable(value = "petId") String petId, @RequestBody PetDto petDto){
         return new ResponseEntity<>(petService.updatePet(petId, petDto), HttpStatus.OK);
     }
+
 }

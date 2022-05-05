@@ -13,7 +13,6 @@ public class NalaApplication {
 	}
 
 	@Bean
-	public ModelMapper modelMapper(){
-		return new ModelMapper();
-	}
+	public ModelMapper modelMapper(){ return new ModelMapper();}
+
 }

@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -13,6 +15,6 @@ public class PetDto {
     private String id;
     private String name;
     private Boolean hasVaccineUpdated;
-    private String birthDate;
+    private LocalDate birthDate;
     private String race;
 }

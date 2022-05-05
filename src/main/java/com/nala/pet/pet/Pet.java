@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,6 +17,6 @@ public class Pet {
     private String id;
     private String name;
     private Boolean hasVaccineUpdated;
-    private String birthDate;
+    private LocalDate birthDate;
     private String race;
 }
